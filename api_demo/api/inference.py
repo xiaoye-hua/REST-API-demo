@@ -15,6 +15,14 @@ class Inference(Resource):
         , definition='Make sure to follow th format'
         , model={
             'name': fields.String(required=True, titile='Name', example='Xiaoye', descriptions="Enter the name")
+            , 'age': fields.Integer(required=True, titile='Age', example=13, descriptions="Enter the age")
+            ,
+
+            'from': fields.List(fields.String(required=True,
+                                              title='friends name',
+                                              ),
+                                example=["Friend1", 'FriendB', "Friend C"]
+                                )
         }
     )
     responds_model = ns.model(
@@ -31,7 +39,10 @@ class Inference(Resource):
     def post(self):
         payload = ns.payload
         name = payload.get('name')
+        age = payload.get('age')
+        friends = payload.get('from')
+        greeting = 'Happy Birthday for ' + str(age) + ', ' + name + ", from " + ", ".join(friends)
         res = {
-            'greeting': 'Happy Birthday, ' + name
+            'greeting': greeting
         }
         return res
