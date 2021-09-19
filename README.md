@@ -10,6 +10,7 @@ The follow tools are used:
 4. gunicorn: restart the service while the service crashed
 5. Docker: deploy micro-service
 
+# Command
 ```shell script
 export PYTHONPATH=./:$PYTHONPATH
 python api_demo/app.py 
@@ -17,7 +18,7 @@ python api_demo/app.py
 
 # TODO
 - Query data type
-    - [ ] Normal query data
+    - [x] Normal query data
     - [ ] Image query data
 - [ ] gunicorn setting
 - [ ] Micro-service with Docker
